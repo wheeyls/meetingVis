@@ -116,7 +116,7 @@ function drawLegend(totalTime) {
       count = 0;
 
   while(count < numberLines) {
-    drawVLine(count * (totalTime / numberLines));
+    drawVLine(8 + count * (totalTime / numberLines));
     console.log(count++);
   }
 }
