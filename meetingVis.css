@@ -1,0 +1,16 @@
+.hd {
+  margin-top: 8px;
+  font-size: 13px;
+}
+.row {
+  border: 1px solid gray;
+  position: relative;
+}
+.slot {
+  background: blue;
+  height: 100%;
+  top: 0;
+}
+.v-line {
+  border-left: 1px solid green;
+}
