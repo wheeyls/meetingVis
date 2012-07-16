@@ -7,7 +7,7 @@ var m = require('mongodb'),
     //db.open(function () {
     //});
 
-var mongostr = process.env.MONGOHQ_URL || 'mongodb://127.0.0.1:27017/node-mongo-meetings';
+var mongostr = process.env.MONGOHQ_URL || 'mongodb://heroku:aintnorestforthewicked@flame.mongohq.com:27085/app5940370' || 'mongodb://127.0.0.1:27017/node-mongo-meetings';
 
 function connectIt() {
   m.connect(mongostr, {auto_reconnect: true}, function(error, db) {
