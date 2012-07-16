@@ -5,9 +5,10 @@ block content
     .meeting-title
 
   #the-app
+    #the-time
     ul(id='the-list')
     input(id='user-name-input')
-    a(href='#', id='add-user') Click to Add User
+    a(href='#', id='add-user') Click to Add Attendee/Topic
 
     .finished 
       a#end-meeting(href='#') Click to end the meeting
@@ -16,5 +17,5 @@ block content
       #show-meeting
 
   script#user-template(type='text/template')
-    <div class='username'>(Ctrl <%= choice %>) <%= name %></div>
+    <div class='username'><%= name %> <span class='small'>(Click or Ctrl-<%= choice %>)</span></div>
     <div class='timeline'></div>

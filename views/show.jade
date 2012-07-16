@@ -5,8 +5,11 @@ block content
     .meeting-title
 
   #the-app(data-meeting-id=meeting_id)
+    #the-time
     ul(id='the-list')
 
+  .finished
+    a(href='/') Record a New Meeting
   script#user-template(type='text/template')
     <div class='username'><%= name %></div>
     <div class='timeline'></div>

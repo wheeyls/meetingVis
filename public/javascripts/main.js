@@ -108,6 +108,12 @@ require([
       var s = this.get('stop') || new Date();
       return new Date(s);
     },
+    getTotalTime: function () {
+      if (!this.get('start')) {
+        return 0;
+      }
+      return this.getStopTime() - this.getStartTime();
+    },
     endMeeting: function () {
       this.set('done', true);
       this.set('stop', new Date());
@@ -130,6 +136,16 @@ require([
       $(document).on('keydown', function (e) {
         that.selectUser.call(that, e);
       });
+
+      ticker.on('tick', this.showTime, this);
+      this.showTime();
+    },
+
+    showTime: function () {
+      var time = this.model.getTotalTime(),
+          minutes = Math.floor(time / 1000 / 60),
+          timeString = (time !== 0 && minutes < 1) ? '< 1' : minutes;
+      $('#the-time').html(timeString + " Minute Meeting");
     },
 
     events: {
