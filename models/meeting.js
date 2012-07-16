@@ -13,10 +13,7 @@ var meeting = exports.meeting = function (attr) {
 
     db(function (db) {
       db.collection("meetings", function (err, data) {
-          console.log(err);
         data.insert(me.attributes, function(error, results) {
-          console.log(error);
-          console.log(results);
           callback(error, results);
         });
       })
@@ -30,8 +27,6 @@ var meeting = exports.meeting = function (attr) {
       db.collection("meetings", function (err, data) {
         var o_id = m.ObjectID.createFromHexString(id);
         data.findOne({_id: o_id}, function (err, result) {
-          console.log(err);
-          console.log(result);
           callback(result);
         });
       });
