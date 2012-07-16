@@ -6,3 +6,31 @@ body {
 a {
   color: #00B7FF;
 }
+
+.user-view {
+  padding-bottom: 15px;
+  list-style-type: none;
+  overflow: auto;
+}
+
+.speaking {
+  border: 1px solid blue;
+}
+
+.finished {
+  margin-top: 50px;
+}
+
+.speech-time {
+  position: absolute;
+  top: 0px;
+  background: blue;
+}
+
+.username {
+  float: left;
+}
+.timeline {
+  top: 15px;
+  position: relative;
+}

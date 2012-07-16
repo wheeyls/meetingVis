@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h2 Showing
+    .meeting-title
+
+  #the-app(data-meeting-id=meeting_id)
+    ul(id='the-list')
+
+  script#user-template(type='text/template')
+    <div class='username'><%= name %></div>
+    <div class='timeline'></div>

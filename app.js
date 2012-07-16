@@ -27,6 +27,13 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/show/:_id', routes.show);
+
+app.post('/meeting', routes.create_meeting);
+app.get('/meeting/:_id', routes.get_meeting);
+
+app.get('/meeting/:meetingId/users', routes.get_users);
+app.post('/meeting/:meetingId/users', routes.create_users);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

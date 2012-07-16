@@ -1,31 +1,48 @@
-define(['backbone', 'timed-speech'], function (Backbone, TimedSpeech) {
-  var times = Backbone.Collection.extend({
-    model: TimedSpeech
+define(['backbone', 'speech-time', 'speech-time-view'], function (Backbone, SpeechTime, SpeechTimeView) {
+  var SpeechTimes = Backbone.Collection.extend({
+    model: SpeechTime,
+    initialize: function (models) {
+      var that = this;
+      if (_(models).isArray()) {
+        _(models).forEach(function (m) {
+          that.add(m);
+        });
+      }
+    },
+    toggle: function () {
+    },
+    startSpeaking: function () {
+      this.add();
+    },
+    stopSpeaking: function () {
+      this.last().done();
+    }
   });
 
+
   return Backbone.Model.extend({
-    speaking: false,
+    initialize: function () {
+      var t = new SpeechTimes(this.get('times'));
 
-    initialize: function (name) {
-      this.set({
-        name: name,
-        times: new Times()
-      });
+      this.set('times', t);
+      this.set('speaking', false);
     },
 
-    startSpeaking: function () {
-      var current;
-      if (this.speaking === true) { return; }
-
-      this.current = this.times.create();
-
-      this.speaking = true;
+    toggle: function () {
+      this.get('speaking') ? this.shaddup() : this.speak();
     },
 
-    stopSpeaking: function () {
-      if (this.speaking !== true) { return; }
-      this.speaking = false;
-      this.current.done();
+    speak: function () {
+      var current, view;
+      if (this.get('speaking') === true) { return; }
+      this.get('times').startSpeaking();
+      this.set('speaking', true);
+    },
+
+    shaddup: function () {
+      if (this.get('speaking') !== true) { return; }
+      this.set('speaking', false);
+      this.get('times').stopSpeaking();
     }
   });
 });
