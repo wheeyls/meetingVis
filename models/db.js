@@ -22,6 +22,7 @@ function connectIt() {
 }
 
 connectIt();
+
 exports.db = function (callback) {
   db_defer.promise.then(callback);
 };
