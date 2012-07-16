@@ -30,7 +30,7 @@ var meeting = exports.meeting = function (attr) {
         var o_id = m.ObjectID.createFromHexString(id);
         data.findOne({_id: o_id}, function (err, result) {
           console.log(err);
-          console.log(results);
+          console.log(result);
           callback(result);
         });
       });
