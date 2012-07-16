@@ -12,6 +12,9 @@ require([
     , meeting
     , MeetingView
     , appview
+    , keyMap = _(['1','2','3','4','5','6','7','8','9','0']).map(function (ea) {
+        return ea.charCodeAt();
+      });
     ;
 
   Users = window.Users = Backbone.Collection.extend({
@@ -158,7 +161,7 @@ require([
       if(this.model.get('done')) { return; }
 
       if(e.ctrlKey) {
-        var theIndex = e.keyCode - 49,
+        var theIndex = keyMap.indexOf(e.keyCode),
             theUser = this.model.users.at(theIndex);
 
         theUser && theUser.toggle();
@@ -200,7 +203,10 @@ require([
     },
 
     addOne: function (user) {
-      var view = new UserView({model: user, choice: this.model.users.length});
+      var count = this.model.users.length,
+          choice = (count - 1) < keyMap.length ? String.fromCharCode(keyMap[count - 1]) : undefined,
+          view = new UserView({model: user, choice: choice});
+
       $('#the-list').append(view.render().el);
     },
 

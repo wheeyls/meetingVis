@@ -17,5 +17,10 @@ block content
       #show-meeting
 
   script#user-template(type='text/template')
-    <div class='username'><%= name %> <span class='small'>(Click or Ctrl-<%= choice %>)</span></div>
+    <div class='username'><%= name %>
+    <span class='small'>(Click
+    <% if (choice) { %>
+    | or Ctrl-<%= choice %>
+    <% } %>)</span>
+    </div>
     <div class='timeline'></div>
