@@ -11,20 +11,24 @@ var meeting = exports.meeting = function (attr) {
   me.save = function (callback) {
     callback = callback || function () {};
 
-    db.collection("meetings", function (err, data) {
-      data.insert(me.attributes, function(error, results) {
-        callback(error, results);
-      });
-    })
+    db(function (db) {
+      db.collection("meetings", function (err, data) {
+        data.insert(me.attributes, function(error, results) {
+          callback(error, results);
+        });
+      })
+    });
   };
 
   me.find = function (id, callback) {
     callback = callback || function () {};
 
-    db.collection("meetings", function (err, data) {
-      var o_id = m.ObjectID.createFromHexString(id);
-      data.findOne({_id: o_id}, function (err, result) {
-        callback(result);
+    db(function (db) {
+      db.collection("meetings", function (err, data) {
+        var o_id = m.ObjectID.createFromHexString(id);
+        data.findOne({_id: o_id}, function (err, result) {
+          callback(result);
+        });
       });
     });
   };
