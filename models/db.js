@@ -11,7 +11,7 @@ var mongostr = process.env.MONGOHQ_URL || 'mongodb://127.0.0.1:27017/node-mongo-
 
 function connectIt() {
   m.connect(mongostr, {auto_reconnect: true}, function(error, db) {
-    console.log('connected to db');
+    console.log('connected to db ' + mongostr);
 
     db.addListener("error", function (error) {
       console.log("Error connecting to MongoLab");
