@@ -7,19 +7,25 @@ define(['backbone', 'speech-time', 'ticker'], function (Backbone, SpeechTime, ti
     tagName: 'div',
     className: 'speech-time',
     scale: function (value) {
-      return value/1000;
+      var start = this.meeting.getStartTime()
+        , stop = this.meeting.getStopTime()
+        , total = (stop - start)/1000
+        , scaledVal = value/1000
+        ;
+
+      return (scaledVal/total) * 100;
     },
     getStart: function () {
       var s = this.model.getStart(),
         theBeginning = this.meeting.getStartTime();
 
-      return this.scale(s - theBeginning) + "px";
+      return this.scale(s - theBeginning) + "%";
     },
     getWidth: function () {
       var s = this.model.getStart(),
           e = this.model.getStop() || new Date();
 
-      return this.scale(e-s) + 'px';
+      return this.scale(e-s) + '%';
     },
     getHeight: function () {
       return '15px';
