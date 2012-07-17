@@ -73,6 +73,8 @@ require([
     toggleSpeak: function () {
       var timelineView;
       if (meeting.get('done')) {return;}
+
+      meeting.startMeeting();
       this.model.toggle();
     },
     updateSpeaking: function () {
@@ -94,7 +96,8 @@ require([
 
   Meeting = Backbone.Model.extend({
     defaults: {
-      done: false
+      done: false,
+      started: false
     },
     initialize: function () {
       this.users = new Users();
@@ -104,8 +107,8 @@ require([
       !this.get('start') && this.set('start', null);
     },
     getStartTime: function () {
-      var s = this.get('start') || this.set('start', new Date());
-      return new Date(this.get('start'));
+      var s = this.get('start') || new Date();
+      return new Date(s);
     },
     getStopTime: function() {
       var s = this.get('stop') || new Date();
@@ -117,11 +120,27 @@ require([
       }
       return this.getStopTime() - this.getStartTime();
     },
+    startMeeting: function () {
+      if (!this.get('started')) {
+        this.set('started', true);
+        this.set('start', new Date());
+        this.trigger('start');
+      }
+    },
     endMeeting: function () {
       this.set('done', true);
       this.set('stop', new Date());
     },
-    urlRoot: '/meeting'
+    urlRoot: '/meeting',
+    scale: function (value) {
+      var start = this.getStartTime(true)
+        , stop = this.getStopTime()
+        , total = (stop - start)/1000
+        , scaledVal = value/1000
+        ;
+
+      return (scaledVal/total) * 100;
+    }
   });
 
   meeting = new Meeting({id: $('#the-app').data('meeting-id')});
@@ -140,8 +159,29 @@ require([
         that.selectUser.call(that, e);
       });
 
+      this.model.on('start', this.showLegend, this);
+      this.model.get('done') && this.showLegend();
+
       ticker.on('tick', this.showTime, this);
+      ticker.on('tick', this.render, this);
       this.showTime();
+      this.lines = [];
+    },
+
+    render: function () {
+      var that = this;
+      $('.legend-lines').each(function () {
+        var atMs = $(this).data('at-ms');
+        $(this).css({
+          left: that.model.scale(atMs) + '%', 
+          height: (that.model.users.length+1) * 33 + 'px'
+        });
+        $(this).html(atMs/1000 + 's');
+      });
+    },
+
+    showLegend: function () {
+      $('.legend-lines').show();
     },
 
     showTime: function () {
@@ -164,7 +204,10 @@ require([
         var theIndex = keyMap.indexOf(e.keyCode),
             theUser = this.model.users.at(theIndex);
 
-        theUser && theUser.toggle();
+        if (theUser) {
+          this.model.startMeeting();
+          theUser.toggle();
+        }
       }
     },
 

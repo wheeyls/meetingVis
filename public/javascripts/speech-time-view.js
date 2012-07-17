@@ -1,4 +1,5 @@
-define(['backbone', 'speech-time', 'ticker'], function (Backbone, SpeechTime, ticker) {
+define(['backbone', 'speech-time', 'ticker'],
+  function (Backbone, SpeechTime, ticker) {
   var SpeechTimeView = Backbone.View.extend({
     model: SpeechTime,
     initialize: function () {
@@ -6,33 +7,25 @@ define(['backbone', 'speech-time', 'ticker'], function (Backbone, SpeechTime, ti
     },
     tagName: 'div',
     className: 'speech-time',
-    scale: function (value) {
-      var start = this.meeting.getStartTime()
-        , stop = this.meeting.getStopTime()
-        , total = (stop - start)/1000
-        , scaledVal = value/1000
-        ;
-
-      return (scaledVal/total) * 100;
-    },
     getStart: function () {
       var s = this.model.getStart(),
         theBeginning = this.meeting.getStartTime();
 
-      return this.scale(s - theBeginning) + "%";
+      return this.meeting.scale(s - theBeginning) + "%";
     },
     getWidth: function () {
       var s = this.model.getStart(),
           e = this.model.getStop() || new Date();
 
-      return this.scale(e-s) + '%';
+      return this.meeting.scale(e-s) + '%';
     },
     getHeight: function () {
       return '15px';
     },
     render: function () {
+      var w = this.getWidth();
       this.$el.html('&nbsp;');
-      this.$el.css('width', this.getWidth());
+      this.$el.css('width', w);
       this.$el.css('height', this.getHeight());
       this.$el.css('left', this.getStart());
       return this;
