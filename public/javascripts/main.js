@@ -237,7 +237,9 @@ require([
           $('.meeting-text').html('Share this link to view this meeting:');
           $('#show-meeting').html(
             '<a href="/show/' + data[0]._id + '">' +
-            document.location.origin + '/show/' + data[0]._id +
+            document.location.protocol +
+            '//' +
+            document.location.host + '/show/' + data[0]._id +
             '</a>'
           );
         });
