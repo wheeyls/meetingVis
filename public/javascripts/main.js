@@ -173,8 +173,7 @@ require([
       $('.legend-lines').each(function () {
         var atMs = $(this).data('at-ms');
         $(this).css({
-          left: that.model.scale(atMs) + '%', 
-          height: (that.model.users.length+1) * 33 + 'px'
+          left: that.model.scale(atMs) + '%'
         });
         $(this).html(atMs/1000 + 's');
       });

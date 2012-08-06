@@ -1,39 +1,40 @@
 extends layout
 
 block content
-  h2 New Meeting
-    .meeting-title
+  .main
+    h1.head New Meeting
+      .meeting-title
 
-  #the-app
-    #the-time
-    ul(id='the-list')
-      li.legend &nbsp;
-        .legend-lines(data-at-ms=1000) &nbsp;
-        .legend-lines(data-at-ms=5000) &nbsp;
-        .legend-lines(data-at-ms=10000) &nbsp;
-        .legend-lines(data-at-ms=30000) &nbsp;
-        .legend-lines(data-at-ms=60000) &nbsp;
-        .legend-lines(data-at-ms=120000) &nbsp;
-        .legend-lines(data-at-ms=240000) &nbsp;
-        .legend-lines(data-at-ms=480000) &nbsp;
-        .legend-lines(data-at-ms=960000) &nbsp;
-        .legend-lines(data-at-ms=1280000) &nbsp;
-        .legend-lines(data-at-ms=2560000) &nbsp;
-        .legend-lines(data-at-ms=5120000) &nbsp;
-    input(id='user-name-input')
-    a(href='#', id='add-user') Click to Add Attendee/Topic
+    #the-app
+      input(id='user-name-input', placeholder='Add Attendee')
 
-    .finished 
-      a#end-meeting(href='#') Click to end the meeting
-    .finished
-      .meeting-text
-      #show-meeting
+      #the-time
+      ul(id='the-list')
+        li.legend &nbsp;
+          .legend-lines(data-at-ms=1000) &nbsp;
+          .legend-lines(data-at-ms=5000) &nbsp;
+          .legend-lines(data-at-ms=10000) &nbsp;
+          .legend-lines(data-at-ms=30000) &nbsp;
+          .legend-lines(data-at-ms=60000) &nbsp;
+          .legend-lines(data-at-ms=120000) &nbsp;
+          .legend-lines(data-at-ms=240000) &nbsp;
+          .legend-lines(data-at-ms=480000) &nbsp;
+          .legend-lines(data-at-ms=960000) &nbsp;
+          .legend-lines(data-at-ms=1280000) &nbsp;
+          .legend-lines(data-at-ms=2560000) &nbsp;
+          .legend-lines(data-at-ms=5120000) &nbsp;
 
-  script#user-template(type='text/template')
-    <div class='username'><%= name %>
-    <span class='small'>(Click
-    <% if (choice) { %>
-    | or Ctrl-<%= choice %>
-    <% } %>)</span>
-    </div>
-    <div class='timeline'></div>
+      .finished
+        a#end-meeting(href='#', class='btn') End Meeting
+      .finished
+        .meeting-text
+        #show-meeting
+
+    script#user-template(type='text/template')
+      <div class='username'><%= name %>
+      <span class='small'>(Click
+      <% if (choice) { %>
+      | or Ctrl-<%= choice %>
+      <% } %>)</span>
+      </div>
+      <div class='timeline'></div>

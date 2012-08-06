@@ -17,7 +17,7 @@ define(['backbone', 'speech-time', 'ticker'],
       var s = this.model.getStart(),
           e = this.model.getStop() || new Date();
 
-      return this.meeting.scale(e-s) + '%';
+      return this.meeting.scale(e - s) + '%';
     },
     getHeight: function () {
       return '15px';
@@ -26,7 +26,7 @@ define(['backbone', 'speech-time', 'ticker'],
       var w = this.getWidth();
       this.$el.html('&nbsp;');
       this.$el.css('width', w);
-      this.$el.css('height', this.getHeight());
+      // this.$el.css('height', this.getHeight());
       this.$el.css('left', this.getStart());
       return this;
     }

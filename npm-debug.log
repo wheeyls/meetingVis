@@ -1,0 +1,33 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@1.1.45
+3 info using node@v0.8.4
+4 verbose config file /Users/mike/.npmrc
+5 verbose config file /usr/local/etc/npmrc
+6 verbose config file /usr/local/lib/node_modules/npm/npmrc
+7 verbose read json /Users/mike/Dropbox/code/meetingVis/package.json
+8 warn package.json meeting-vis@0.0.1 No README.md file found!
+9 verbose run-script [ 'prestart', 'start', 'poststart' ]
+10 info prestart meeting-vis@0.0.1
+11 info start meeting-vis@0.0.1
+12 verbose unsafe-perm in lifecycle true
+13 silly exec sh "-c" "node app"
+14 silly sh,-c,node app,/Users/mike/Dropbox/code/meetingVis spawning
+15 info meeting-vis@0.0.1 Failed to exec start script
+16 error meeting-vis@0.0.1 start: `node app`
+16 error `sh "-c" "node app"` failed with 1
+17 error Failed at the meeting-vis@0.0.1 start script.
+17 error This is most likely a problem with the meeting-vis package,
+17 error not with npm itself.
+17 error Tell the author that this fails on your system:
+17 error     node app
+17 error You can get their info via:
+17 error     npm owner ls meeting-vis
+17 error There is likely additional logging output above.
+18 error System Darwin 12.0.0
+19 error command "node" "/usr/local/bin/npm" "start"
+20 error cwd /Users/mike/Dropbox/code/meetingVis
+21 error node -v v0.8.4
+22 error npm -v 1.1.45
+23 error code ELIFECYCLE
+24 verbose exit [ 1, true ]

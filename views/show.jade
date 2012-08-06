@@ -1,28 +1,29 @@
 extends layout
 
 block content
-  h2 Meeting From
-    .meeting-title
+  .main
+    h1.head Meeting From
+      .meeting-title
 
-  #the-app(data-meeting-id=meeting_id)
-    #the-time
-    ul(id='the-list')
-      li.legend &nbsp;
-        .legend-lines(data-at-ms=1000) &nbsp;
-        .legend-lines(data-at-ms=5000) &nbsp;
-        .legend-lines(data-at-ms=10000) &nbsp;
-        .legend-lines(data-at-ms=30000) &nbsp;
-        .legend-lines(data-at-ms=60000) &nbsp;
-        .legend-lines(data-at-ms=120000) &nbsp;
-        .legend-lines(data-at-ms=240000) &nbsp;
-        .legend-lines(data-at-ms=480000) &nbsp;
-        .legend-lines(data-at-ms=960000) &nbsp;
-        .legend-lines(data-at-ms=1280000) &nbsp;
-        .legend-lines(data-at-ms=2560000) &nbsp;
-        .legend-lines(data-at-ms=5120000) &nbsp;
+    #the-app(data-meeting-id=meeting_id)
+      #the-time
+      ul(id='the-list')
+        li.legend &nbsp;
+          .legend-lines(data-at-ms=1000) &nbsp;
+          .legend-lines(data-at-ms=5000) &nbsp;
+          .legend-lines(data-at-ms=10000) &nbsp;
+          .legend-lines(data-at-ms=30000) &nbsp;
+          .legend-lines(data-at-ms=60000) &nbsp;
+          .legend-lines(data-at-ms=120000) &nbsp;
+          .legend-lines(data-at-ms=240000) &nbsp;
+          .legend-lines(data-at-ms=480000) &nbsp;
+          .legend-lines(data-at-ms=960000) &nbsp;
+          .legend-lines(data-at-ms=1280000) &nbsp;
+          .legend-lines(data-at-ms=2560000) &nbsp;
+          .legend-lines(data-at-ms=5120000) &nbsp;
 
-  .finished
-    a(href='/') Record a New Meeting
-  script#user-template(type='text/template')
-    <div class='username'><%= name %></div>
-    <div class='timeline'></div>
+    .finished
+      a(href='/', class='btn') Record a New Meeting
+    script#user-template(type='text/template')
+      <div class='username'><%= name %></div>
+      <div class='timeline'></div>
