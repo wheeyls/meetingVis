@@ -3,39 +3,15 @@ body * {
 }
 
 body {
-  padding: 50px;
   font-family: helvetica,arial,sans-serif;
   background-color: #BAD0D9;
   /*background-color: #F2EDDA;*/
   color: #1C1D26;
-  background: #71aa9d url('/images/indigo-stripes.png');
 }
 
 .main {
-  padding: 50px;
+  padding: 30px;
   background-color: #F2EDDA;
-  -webkit-border-radius: 13px;
-  border-radius: 13px;
-
-/*
-  background: #f2edda; /* Old browsers */
-/*
-  background: -moz-linear-gradient(top,  #f2edda 0%, #ffffff 91%, #ffffff 100%); /* FF3.6+ */
-/*
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2edda), color-stop(91%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-/*
-  background: -webkit-linear-gradient(top,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-/*
-  background: -o-linear-gradient(top,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* Opera 11.10+ */
-/*
-  background: -ms-linear-gradient(top,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* IE10+ */
-/*
-  background: linear-gradient(to bottom,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* W3C */
-/*
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2edda', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-
-  -webkit-box-shadow: inset 0px 0px 2px 0px #2e2c52;
-  box-shadow: inset 0px 0px 2px 0px #2e2c52;
 }
 
 .head {
