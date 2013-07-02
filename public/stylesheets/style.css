@@ -4,8 +4,7 @@ body * {
 
 body {
   font-family: helvetica,arial,sans-serif;
-  background-color: #BAD0D9;
-  /*background-color: #F2EDDA;*/
+  background-color: rgb(22, 75, 97);
   color: #1C1D26;
 }
 
