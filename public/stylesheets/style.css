@@ -6,6 +6,7 @@ body {
   font-family: helvetica,arial,sans-serif;
   background-color: rgb(22, 75, 97);
   color: #1C1D26;
+  margin: 10px 0;
 }
 
 .main {
@@ -54,10 +55,11 @@ li {
 }
 
 .user-view {
-  padding-bottom: 0.6em;
   overflow-y: hidden;
   overflow-x: hidden;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  clear: both;
+  border: 1px solid transparent;
 }
 
 .speaking {
@@ -74,7 +76,6 @@ li {
   top: 0px;
   /*background: #BE7562;*/
   background: #bad0d9;
-  height: .5em;
 
 
   -webkit-touch-callout: none;
@@ -92,16 +93,21 @@ li {
 
 .username {
   float: left;
-  padding: .2em;
+  padding: 0 .2em;
+  width: 10%;
 }
 .timeline {
-  top: 1.5em;
   position: relative;
+  width: 90%;
+  float: left;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 .legend {
   position: relative;
   font-size: 0.6em;
   border-bottom: 1px solid #ccc;
+  margin-left: 10%;
 }
 .legend-lines {
   display: none;

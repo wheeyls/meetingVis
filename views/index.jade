@@ -9,6 +9,9 @@ block content
       input(id='user-name-input', placeholder='Add Attendee')
 
       #the-time
+
+      .small
+        | Click or Ctrl-# To Select
       ul(id='the-list')
         li.legend &nbsp;
           .legend-lines(data-at-ms=1000) &nbsp;
@@ -30,10 +33,6 @@ block content
         #show-meeting
 
     script#user-template(type='text/template')
-      <div class='username'><%= name %>
-      <span class='small'>(Click
-      <% if (choice) { %>
-      | or Ctrl-<%= choice %>
-      <% } %>)</span>
+      <div class='username'><%= choice %>) <%= name %>
       </div>
       <div class='timeline'></div>
