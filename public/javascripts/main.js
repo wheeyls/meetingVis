@@ -1,7 +1,7 @@
 require([
-  'jquery', 
-  'backbone', 
-  'user', 
+  'jquery',
+  'backbone',
+  'user',
   'speech-time',
   'speech-time-view',
   'ticker'
@@ -27,10 +27,10 @@ require([
       return '/meeting/' + mid + '/users';
     },
     save: function () {
-      var response = Backbone.sync('create', this, { 
-        url: this.url(), 
-        contentType: 'application/json', 
-        data: JSON.stringify(this.toJSON()) 
+      var response = Backbone.sync('create', this, {
+        url: this.url(),
+        contentType: 'application/json',
+        data: JSON.stringify(this.toJSON())
       });
 
       return response;
@@ -170,13 +170,28 @@ require([
 
     render: function () {
       var that = this;
-      $('.legend-lines').each(function () {
-        var atMs = $(this).data('at-ms');
+      $('.legend-lines').each(function (index) {
+        var time = that.model.getTotalTime()
+          , currentMinute = Math.floor(time / 1000 / 30) + 1
+          , atMs = ((currentMinute * 1000 * 30) / 10) * index
+          ;
         $(this).css({
           left: that.model.scale(atMs) + '%'
         });
-        $(this).html(atMs/1000 + 's');
+
+        //if (index === 0 || index === 5 || index === 10) {
+          $(this).html(that.msToWords(atMs));
+        //}
       });
+    },
+
+    msToWords: function (ms) {
+      var sec = ms / 1000
+        , min = Math.floor(sec / 60)
+        , rem = Math.floor(sec) % 60
+        ;
+
+      return min + ':' + ('00' + rem).slice(-2);
     },
 
     showLegend: function () {
@@ -185,9 +200,9 @@ require([
 
     showTime: function () {
       var time = this.model.getTotalTime(),
-          minutes = Math.floor(time / 1000 / 60),
-          timeString = (time !== 0 && minutes < 1) ? '< 1' : minutes;
-      $('#the-time').html(timeString + " Minute Meeting");
+          timeString = this.msToWords(time);
+
+      $('#the-time').html(timeString + " Meeting");
     },
 
     events: {

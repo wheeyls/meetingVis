@@ -5,20 +5,37 @@ body * {
 body {
   padding: 50px;
   font-family: helvetica,arial,sans-serif;
-  background: url('/images/subtle_dots_2X.png');
-  background-size: 27px 15px;
-  /*background-color: #B06C00;*/
-  color: #001426;
+  background-color: #BAD0D9;
+  /*background-color: #F2EDDA;*/
+  color: #1C1D26;
+  background: #71aa9d url('/images/indigo-stripes.png');
 }
 
 .main {
   padding: 50px;
-  background-color: #FFF3E0;
+  background-color: #F2EDDA;
   -webkit-border-radius: 13px;
   border-radius: 13px;
 
-  -webkit-box-shadow: 0px 0px 10px 0px #000;
-  box-shadow: 0px 0px 10px 0px #000;
+/*
+  background: #f2edda; /* Old browsers */
+/*
+  background: -moz-linear-gradient(top,  #f2edda 0%, #ffffff 91%, #ffffff 100%); /* FF3.6+ */
+/*
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2edda), color-stop(91%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+/*
+  background: -webkit-linear-gradient(top,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+/*
+  background: -o-linear-gradient(top,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* Opera 11.10+ */
+/*
+  background: -ms-linear-gradient(top,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* IE10+ */
+/*
+  background: linear-gradient(to bottom,  #f2edda 0%,#ffffff 91%,#ffffff 100%); /* W3C */
+/*
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2edda', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+  -webkit-box-shadow: inset 0px 0px 2px 0px #2e2c52;
+  box-shadow: inset 0px 0px 2px 0px #2e2c52;
 }
 
 .head {
@@ -38,8 +55,7 @@ a {
 }
 
 .btn {
-  color: #FF9C00;
-  color: #00B7FF;
+  color: #1F5AA6;
   text-decoration: none;
   margin: 12px 0 12px 0px;
 }
@@ -63,10 +79,9 @@ li {
 }
 
 .user-view {
-  padding-bottom: 1.5em;
-  overflow-y: auto;
+  padding-bottom: 0.6em;
+  overflow-y: hidden;
   overflow-x: hidden;
-  border: 1px solid #ddd;
   margin-bottom: 4px;
 }
 
@@ -82,8 +97,9 @@ li {
   padding: 0; margin: 0; border: 0;
   position: absolute;
   top: 0px;
-  background: #3F6D91;
-  height: 1.618em;
+  /*background: #BE7562;*/
+  background: #bad0d9;
+  height: .5em;
 
 
   -webkit-touch-callout: none;
@@ -101,16 +117,16 @@ li {
 
 .username {
   float: left;
-  height: 1em;
   padding: .2em;
 }
 .timeline {
   top: 1.5em;
   position: relative;
-  height: 1.618em;
 }
 .legend {
   position: relative;
+  font-size: 0.6em;
+  border-bottom: 1px solid #ccc;
 }
 .legend-lines {
   display: none;
@@ -118,6 +134,7 @@ li {
   border-left: 1px solid #ccc;
   color: #666;
   top: 0;
+  padding-left: 3px;
   -webkit-transition: all .5s linear;
      -moz-transition: all .5s linear;
        -o-transition: all .5s linear;
